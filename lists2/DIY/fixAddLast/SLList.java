@@ -39,13 +39,18 @@ public class SLList {
 
     /** Adds an item to the end of the list. */
     public void addLast(int x) {
-        IntNode p = first;
+        if ( first == null ){
+            first = new IntNode(x,null) ;
+        } else {
+            IntNode p = first;
+            while (p.next != null) {
+            p = p.next;
+            }
+            p.next = new IntNode(x, null);
+        }
 
         /* Advance p to the end of the list. */
-        while (p.next != null) {
-            p = p.next;
-        }
-        p.next = new IntNode(x, null);
+        
     }
 
     /** Crashes when you call addLast on an empty SLList. Fix it. */
